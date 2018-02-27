@@ -1,0 +1,17 @@
+[
+  {
+    "caption": "Code Search",
+    "command": "csearch"
+  },
+  {
+    "caption": "Code Search: Refresh Index",
+    "command": "cindex"
+  },
+  {
+    "caption": "Code Search: Create New Index from Project Settings",
+    "command": "cindex",
+    "args": {
+      "index_project": true
+    }
+  }
+]

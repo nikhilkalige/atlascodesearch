@@ -1,0 +1,23 @@
+language: python
+python:
+    - "3.3"
+env:
+    global:
+        - GOPATH=$HOME/go
+        - PATH=$GOPATH/bin:$PATH
+
+install:
+    - sudo add-apt-repository ppa:webupd8team/sublime-text-3 -y
+    - sudo apt-get update
+    - sudo apt-get install sublime-text-installer golang -y
+    - go get github.com/google/codesearch/cmd/...
+    - mkdir -p $HOME/.config/sublime-text-3/Packages
+    - ln -s $PWD $HOME/.config/sublime-text-3/Packages/AtlasCodeSearch
+    - git clone --branch 0.4.3 https://github.com/randy3k/UnitTesting $HOME/.config/sublime-text-3/Packages/UnitTesting
+
+before_script:
+    - export DISPLAY=:99.0
+    - sh -e /etc/init.d/xvfb start
+
+script:
+    - python $HOME/.config/sublime-text-3/Packages/UnitTesting/sbin/run.py AtlasCodeSearch
